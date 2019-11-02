@@ -52,7 +52,7 @@ namespace SegundoParcial
             Iniciar();
             Consultar();
             //ciudad = comboBoxCities.Text.ToString();
-            ciudad = comboBoxCities.SelectedItem.ToString();
+            //ciudad = comboBoxCities.SelectedItem.ToString();
             /*Console.WriteLine($"Ciudad:{response.name}");
             Console.WriteLine($"Temperatura:{response.main.temp}");
             Console.WriteLine($"Max:{response.main.temp_max}");
