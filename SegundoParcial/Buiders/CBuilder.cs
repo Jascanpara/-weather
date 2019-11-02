@@ -29,5 +29,30 @@ namespace SegundoParcial.Buiders
 
         }
 
+        public virtual void PasoHum()
+        {
+
+        }
+        public virtual void PasoVien()
+        {
+
+        }
+        public virtual void PasoLunes()
+        {
+
+        }
+        public virtual void PasoMartes()
+        {
+
+        }
+        public virtual void PasoMiercoles()
+        {
+
+        }
+
+        public virtual void PasoJueves()
+        {
+
+        }
     }
 }

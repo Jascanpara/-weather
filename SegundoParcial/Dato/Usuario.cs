@@ -21,7 +21,6 @@ namespace SegundoParcial.Dato
         {
             return listaH;
         }
-
         public void Limpiar()
         {
             listaH.Clear();

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SegundoParcial.Models;
 using SegundoParcial.Services;
@@ -18,6 +12,7 @@ namespace SegundoParcial
         DataTable Tabla;
         Dato.Usuario Dato = new Dato.Usuario();
         string ciudad;
+        string temper;
 
         public Inicio(string nombre)
         {
@@ -25,7 +20,8 @@ namespace SegundoParcial
             lbUsername.Text = nombre;
             panelSearch.Visible = false;
             panelDataGreed.Visible = false;
-            Iniciar();;
+            panelCityForechast.Visible = false;
+            Iniciar();
         }
 
         private void Inicio_Load(object sender, EventArgs e)
@@ -56,7 +52,7 @@ namespace SegundoParcial
             Iniciar();
             Consultar();
             //ciudad = comboBoxCities.Text.ToString();
-            ciudad= comboBoxCities.SelectedItem.ToString();
+            ciudad = comboBoxCities.SelectedItem.ToString();
             /*Console.WriteLine($"Ciudad:{response.name}");
             Console.WriteLine($"Temperatura:{response.main.temp}");
             Console.WriteLine($"Max:{response.main.temp_max}");
@@ -69,6 +65,7 @@ namespace SegundoParcial
         {
             panelDataGreed.Visible = false;
             panelSearch.Visible = false;
+            panelCityForechast.Visible = false;
         }
 
         private void Iniciar()
@@ -82,19 +79,26 @@ namespace SegundoParcial
         }
         private void Guardar()
         {
+            lbCity.Text = comboBoxCities.Text;
             IProxy proxy = new Proxy();
             var response = proxy.weather("rome");
             Random rnd = new Random();
             int temperatura = rnd.Next(9, 31);
             int max = rnd.Next(temperatura, 31);
             int min = rnd.Next(9, temperatura);
-            //ciudad = $"Ciudad:{response.name}";
+            int hum = rnd.Next(25, 75);
+            int vie = rnd.Next(1, 34);
+            int lun = rnd.Next(min, max);
+            int mar = rnd.Next(min, max);
+            int mie = rnd.Next(min, max);
+            int jue = rnd.Next(min, max);
+            ciudad = $"Ciudad:{response.name}";
             //temperatura = response.main.temp;
             //max = $"Max:{response.main.temp_max}";
             //min = $"Min:{response.main.temp_min}";
             var admi = new Admi();
             Citi cit = null;
-            cit = new Citi { Ciudad = comboBoxCities.Text, Temperatura = temperatura.ToString(), Min = min.ToString(), Max = max.ToString() };
+            cit = new Citi { Ciudad = comboBoxCities.Text, Temperatura = temperatura.ToString(), Min = min.ToString(), Max = max.ToString()};
             //cit = new Citi { Ciudad = ciudad, Temperatura = $"Temperatura:{response.main.temp}", Min = $"Min:{response.main.temp_min}", Max = $"Max:{response.main.temp_max}" };
             Dato.Guardar(cit);
         }
@@ -110,6 +114,21 @@ namespace SegundoParcial
                 fila["Min"] = item.Min;
                 Tabla.Rows.Add(fila);
             }
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnForechast_Click(object sender, EventArgs e)
+        {
+            panelCityForechast.Visible = true;
+        }
+
+        private void DataGridViewCityForechast_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

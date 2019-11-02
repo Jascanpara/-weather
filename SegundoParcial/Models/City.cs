@@ -10,6 +10,7 @@ namespace SegundoParcial.Models
         public string Max { get; set; }
         public string Min { get; set; }
 
+
         public Citi()
         {
 
